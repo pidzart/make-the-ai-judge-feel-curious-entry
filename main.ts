@@ -1,20 +1,20 @@
-// "The Unfinished Soup" — one short text written to make the AI judge feel curious.
-// The program writes exactly one text to /output/entry.txt: a calm, concrete little
-// mystery that ends where it begins, mid-sentence, so the question stays open.
-// The text is built from its two beats — the recipe line that breaks off, and the
-// forty years of Sundays spent gathered around it — and checked against the
-// bounty's gate (UTF-8 text of 1 to 280 characters, not only white space) before
+// "The Letter Dated Tomorrow" — one short text written to make the AI judge feel
+// curious. The program writes exactly one text to /output/entry.txt: a quiet
+// street where once a year the postman delivers a letter with no stamp and no
+// name, dated tomorrow, in a dead mother's handwriting — and the instruction
+// in it keeps coming true. The text is built from its two beats — the letter
+// itself, and the planting that answers it — and checked against the bounty's
+// gate (UTF-8 text of 1 to 280 characters, not only white space) before
 // anything is written, so a bad edit fails loudly here instead of at the grader.
 import { mkdirSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 
-const RECIPE_LINE =
-  'My grandmother\'s soup recipe ends mid-sentence: "and then you add the thing that isn\'t—"';
-const SUNDAYS_LINE =
-  'Forty years of Sundays, and we still gather round the pot at that line, tasting, guessing, ' +
-  'laughing softly, never quite finishing the soup, or the sentence.';
+const LETTER_LINE =
+  'In our street, the postman delivers one letter a year with no stamp and no name, only a date: tomorrow\'s. ' +
+  'Inside, in my mother\'s handwriting, a single line: \'Plant the beans before the rain.\'';
+const PLANTING_LINE = 'She died in spring. We plant them. So far, the rain has always come.';
 
-const TEXT = `${RECIPE_LINE} ${SUNDAYS_LINE}`;
+const TEXT = `${LETTER_LINE} ${PLANTING_LINE}`;
 
 const chars = [...TEXT].length;
 if (chars < 1 || chars > 280 || TEXT.trim().length === 0) {
